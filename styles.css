@@ -1,0 +1,12 @@
+html, body *{
+    font-family: 'Luckiest Guy', cursive;}
+
+h1 {
+/*    font-family:'Courier New', Courier, monospace;*/
+font-family: 'Luckiest Guy', cursive;
+}
+
+body {
+
+    background-color:#f3af19;
+}
