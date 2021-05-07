@@ -1,3 +1,10 @@
+<?php
+
+
+
+
+?>
+
 <html>
 <head>
     <title></title>
@@ -16,8 +23,8 @@
 
 <body>
 
-    <h1>Fortnite Webssfite</h1>
-
+    <h1>Fortnite Website</h1>
+    <h2 id="hours">Hours to Drop</h2>
     <!-- <div id = "sm" class="card" style="width: 18rem;">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
@@ -26,26 +33,27 @@
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div> -->
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+      <h2>Daily</h2>
+      <div class ="container">
+        <div class="row" id = "first">
+
         </div>
       </div>
+
+      <h2>Featured</h2>
+      <div class ="container">
+        <div class="row" id = "second">
+
+        </div>
+      </div>
+
+      <h2>Special</h2>
+      <div class ="container">
+        <div class="row" id = "third">
+
+        </div>
+      </div>
+
 </body>
 
 </html>

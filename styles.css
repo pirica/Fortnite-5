@@ -1,12 +1,33 @@
 html, body *{
     font-family: 'Luckiest Guy', cursive;}
 
-h1 {
+h1, h2 {
 /*    font-family:'Courier New', Courier, monospace;*/
 font-family: 'Luckiest Guy', cursive;
+text-align: center;
+}
+
+h2{
+    color: white;
 }
 
 body {
 
     background-color:#f3af19;
+}
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 2px; /* Added */
+    margin-top: 50px; /* Added */
+    background-color: aquamarine;
+    width: 10rem;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

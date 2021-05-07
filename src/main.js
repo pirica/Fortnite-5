@@ -4,14 +4,18 @@ window.onload = init;
 function init(){
 
     GetData();
-    //CreateCard();
+    GetTimeTillNextDrop();
+
 }
 
-function CreateCard(refImg, title){
+function CreateCard(refImg, title, price, num){
+
+    let col = document.createElement('div');
+    col.className = "col";
 
     let new_row = document.createElement("div");
     new_row.className = "card";
-    new_row.style = "width: 18rem;"
+
 
     //sets the image
     let newIMG = document.createElement("img");
@@ -20,15 +24,15 @@ function CreateCard(refImg, title){
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
-    let cardTitle = document.createElement("h5");
-    cardTitle.className = "card-title";
-    cardTitle.innerHTML = title;
-    cardBody.appendChild(cardTitle);
-    
+    // let cardTitle = document.createElement("h5");
+    // cardTitle.className = "card-title";
+    // cardTitle.innerHTML = title + " " + price;
+    // cardBody.appendChild(cardTitle);
 
     new_row.appendChild(cardBody);
+    col.appendChild(new_row);
     //appends to document
-    document.querySelector("body").appendChild(new_row);
+    document.querySelector("#" + num).appendChild(col);
 
 }
 
@@ -42,22 +46,70 @@ function GetData(){
     request.onload = function(){
 
         //data = JSON.parse(this.response);
-       data = JSON.parse(this.response).data.daily.entries;
-        for(let i = 0; i < data.length; i++){
-
-            let src = data[i].items[0].images.icon;
-            CreateCard(src, data[i].items[0].name );            
-            // let img = document.createElement("img");
-            // img.src = src;
-            // let bd = document.getElementsByTagName('body')[0];
-            // bd.appendChild(img);
-    
-        }//end of for loop  
- 
+        data = JSON.parse(this.response).data//.daily.entries;
         console.log(data);
+ 
+      
+
+        let c_entries = data.daily.entries;
+        for(let i = 0; i < c_entries.length; i++){
+
+            let src = c_entries[i].items[0].images.icon;
+            CreateCard(src, c_entries[i].items[0].name, c_entries[i].regularPrice, "first");            
+
+        }//end of for loop  
+
+  
+        
+        let c_features = data.featured.entries;
+        for(let i = 0; i < c_features.length; i++){
+
+            let src = c_features[i].items[0].images.icon;
+            CreateCard(src, c_features[i].items[0].name, c_features[i].regularPrice, "second");            
+
+        }//end of for loop  
+
+
+
+        let c_specialFeatures = data.specialFeatured.entries;
+        for(let i = 0; i < c_specialFeatures.length; i++){
+
+            let src = c_specialFeatures[i].items[0].images.icon;
+            CreateCard(src, c_specialFeatures[i].items[0].name, c_specialFeatures[i].regularPrice, "third");            
+
+        }//end of for loop  
 
     }//end of on load function
 
     request.send()
 
 }//end of get data
+
+function GetTimeTillNextDrop(){
+
+    let now = new Date();
+    now.setDate(now.getDate());
+
+
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate()+1);
+    tomorrow.setHours(20);
+    tomorrow.setMinutes(0);
+    tomorrow.setMilliseconds(0);
+
+    // get total seconds between the times
+    var delta = Math.abs(tomorrow - now) / 1000;
+
+    // calculate (and subtract) whole days
+    var days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    // calculate (and subtract) whole hours
+    var hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    let time = document.querySelector("#hours");
+    time.innerHTML = hours + " Hours to New Items";
+
+
+}//end of GetTimeTillNextDrop
