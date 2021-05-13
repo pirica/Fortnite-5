@@ -10,29 +10,37 @@ function init(){
 
 function CreateCard(refImg, title, price, num){
 
+    //append this first
     let col = document.createElement('div');
     col.className = "col";
 
-    let new_row = document.createElement("div");
-    new_row.className = "card";
-
+    //append to col - second
+    let cardTag = document.createElement("div");
+    cardTag.className = "card";
 
     //sets the image
     let newIMG = document.createElement("img");
     newIMG.src = refImg;
-    new_row.appendChild(newIMG);
+    cardTag.appendChild(newIMG);
 
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
-    // let cardTitle = document.createElement("h5");
-    // cardTitle.className = "card-title";
-    // cardTitle.innerHTML = title + " " + price;
-    // cardBody.appendChild(cardTitle);
 
-    new_row.appendChild(cardBody);
-    col.appendChild(new_row);
+    let link = document.createElement('a');
+    link.className = "custom-card";
+
+   // cardTag.appendChild(cardBody);
+    link.appendChild(cardTag);
+    col.appendChild(link);
+
+    // cardBody.appendChild(link);
+    // cardTag.appendChild(cardBody);
+    // col.appendChild(cardTag);
+
+
     //appends to document
     document.querySelector("#" + num).appendChild(col);
+
 
 }
 
@@ -49,8 +57,6 @@ function GetData(){
         data = JSON.parse(this.response).data//.daily.entries;
         console.log(data);
  
-      
-
         let c_entries = data.daily.entries;
         for(let i = 0; i < c_entries.length; i++){
 
@@ -60,7 +66,6 @@ function GetData(){
         }//end of for loop  
 
   
-        
         let c_features = data.featured.entries;
         for(let i = 0; i < c_features.length; i++){
 
@@ -68,7 +73,6 @@ function GetData(){
             CreateCard(src, c_features[i].items[0].name, c_features[i].regularPrice, "second");            
 
         }//end of for loop  
-
 
 
         let c_specialFeatures = data.specialFeatured.entries;

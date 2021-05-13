@@ -1,6 +1,8 @@
 <?php
 
-
+if(isset($_POST['username'])){
+  $username = $_POST['username'];
+}
 
 
 ?>
@@ -23,6 +25,26 @@
 
 <body>
 
+<button><a href="./item.php" class="button">Go to Google</a>
+</button>
+
+<form method = "post" action="/item.php">
+  <p>sdf</p>
+    <input name="username" type="hidden" value="V-Bucks">
+  <button><img type = "submit" value = "Save" src="/VBucks.png"></button>
+</form>
+
+
+<!-- 
+<a href="" class="custom-card">
+  <div class="card" style="width: 15rem; display: inline-block">
+    <img class="card-img-top" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Wrapped with a tag</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+</a> -->
     <h1>Fortnite Website</h1>
     <h2 id="hours">Hours to Drop</h2>
     <!-- <div id = "sm" class="card" style="width: 18rem;">
